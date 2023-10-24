@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-boot-jwt" />
-        <module name="taller-4-react-equipo-9" />
       </profile>
     </annotationProcessing>
   </component>
