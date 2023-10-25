@@ -15,14 +15,15 @@ function Login() {
         axios
             .post('/authenticate', userData)
             .then((response) => {
-                
                 const token = response.data.token;
                 console.log('Token JWT recibido:', token);
 
-                
+                // Almacena el token en el LocalStorage
+                localStorage.setItem('token', token);
+
+                // Redirige al usuario o realiza cualquier otra acción necesaria
             })
             .catch((error) => {
-                
                 console.error('Error de autenticación:', error);
             });
     };
