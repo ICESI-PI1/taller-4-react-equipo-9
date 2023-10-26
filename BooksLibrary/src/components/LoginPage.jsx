@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import axios from '../../src/config/axios'
+import { useState } from 'react';
+import React from 'react';
+import axios from '../config/axios';
+import ReactDOM from 'react-dom/client';
+import Book from '../components/Books.jsx';
 
-function Login() {
+function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-        
         const userData = {
             username: username,
             password: password,
@@ -17,11 +19,14 @@ function Login() {
             .then((response) => {
                 const token = response.data.token;
                 console.log('Token JWT recibido:', token);
-
-                // Almacena el token en el LocalStorage
                 localStorage.setItem('token', token);
 
-                // Redirige al usuario o realiza cualquier otra acción necesaria
+                // Redirige al usuario al componente Dashboard
+                ReactDOM.createRoot(document.getElementById('root')).render(
+                    <React.StrictMode>
+                        <Book />
+                    </React.StrictMode>
+                );
             })
             .catch((error) => {
                 console.error('Error de autenticación:', error);
@@ -71,6 +76,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
+        margin: '0 auto', // Agregado para centrar el contenedor
     },
     heading: {
         fontSize: '24px',
@@ -100,4 +106,4 @@ const styles = {
     },
 };
 
-export default Login;
+export default LoginPage;
