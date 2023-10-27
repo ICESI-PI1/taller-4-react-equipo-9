@@ -6,7 +6,7 @@
 
 ## Descripción del Proyecto
 
-Este proyecto, "Taller 4 React", es una aplicación que utiliza Spring Boot en el backend junto con JSON Web Tokens (JWT) para la autenticación y autorización de usuarios. En esta versión, hemos incorporado React en la interfaz de usuario para proporcionar funcionalidades y componentes de usuario interactivos.
+Este proyecto, "Taller 4 React", es una aplicación que utiliza Spring Boot en el backend junto con JSON Web Tokens (JWT) para la autenticación y autorización de usuarios y manejo de un sistema de librerias con manejo de libros y administracion de autores. En esta versión, hemos incorporado React en la interfaz de usuario para proporcionar funcionalidades y componentes de usuario interactivos.
 
 ## Funcionalidades
 
