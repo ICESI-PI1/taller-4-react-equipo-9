@@ -2,7 +2,7 @@ import { useState } from 'react';
 import React from 'react';
 import axios from '../config/axios';
 import ReactDOM from 'react-dom/client';
-import Book from '../components/Books.jsx';
+import DashboardPage from '../components/DashboardPage.jsx';
 
 function LoginPage() {
     const [username, setUsername] = useState('');
@@ -24,7 +24,7 @@ function LoginPage() {
                 // Redirige al usuario al componente Dashboard
                 ReactDOM.createRoot(document.getElementById('root')).render(
                     <React.StrictMode>
-                        <Book />
+                        <DashboardPage />
                     </React.StrictMode>
                 );
             })
