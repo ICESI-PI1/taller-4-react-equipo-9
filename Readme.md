@@ -31,7 +31,11 @@ Siga estos pasos para utilizar y ejecutar el proyecto en su entorno local:
 - Java SDK
 - Node.js
 - Git
+
+## Tecnologias Usadas
+- SpringBoot
 - React
+- JWT
 
 ## Contribuciones
 
