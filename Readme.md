@@ -6,7 +6,7 @@
 
 ## Descripción del Proyecto
 
-Este proyecto, "Taller 4 React", es una aplicación que utiliza Spring Boot en el backend junto con JSON Web Tokens (JWT) para la autenticación y autorización de usuarios y manejo de un sistema de librerias con manejo de libros y administracion de autores. En esta versión, hemos incorporado React en la interfaz de usuario para proporcionar funcionalidades y componentes de usuario interactivos.
+Este proyecto, "Taller 4 React", es una aplicación que utiliza Spring Boot en el backend junto con JSON Web Tokens (JWT) para la autenticación y autorización de usuarios. En esta versión, hemos incorporado React en la interfaz de usuario para proporcionar funcionalidades y componentes de usuario interactivos. Estamos utilizando este proyecto para desarrollar una aplicación en ReactJS que consume la API REST, desarrollada en el taller anterior, para gestionar libros y autores. Además, se ha implementado un sistema de autenticación utilizando JWT.
 
 ## Funcionalidades
 
@@ -15,25 +15,9 @@ Este proyecto, "Taller 4 React", es una aplicación que utiliza Spring Boot en e
 - **Creación de Libros:** Los usuarios pueden agregar libros junto con información del autor.
 - **Listado de Libros:** Se muestra una lista de libros en la interfaz de usuario.
 
-## Lógica del Proyecto
+## Pasos para Usar el Proyecto
 
-- **Spring Boot Backend:** El backend de la aplicación está construido con Spring Boot y se encarga de la autenticación, autorización y gestión de libros y autores.
-- **React Frontend:** Utilizamos React para crear una interfaz de usuario atractiva y funcional que se comunica con el backend a través de solicitudes HTTP.
-- **JWT:** JSON Web Tokens se utilizan para asegurar la comunicación entre el frontend y el backend.
-
-## Integrantes del Equipo
-
-- Juan Pablo Acevedo
-- Jesus Garces
-- Santiago Arboleda
-
-## Requisitos de Instalación
-
-- Java SDK
-- Node.js
-- Git
-
-## Instrucciones de Instalación
+Siga estos pasos para utilizar y ejecutar el proyecto en su entorno local:
 
 1. Clona este repositorio en tu máquina local.
 2. Configura la base de datos y ajusta la configuración de la aplicación en el backend.
@@ -44,6 +28,12 @@ Este proyecto, "Taller 4 React", es una aplicación que utiliza Spring Boot en e
 ## Contribuciones
 
 ¡Estamos abiertos a contribuciones! Si deseas colaborar en el proyecto, por favor envía una solicitud de extracción.
+
+## Integrantes del Equipo
+
+- Juan Pablo Acevedo
+- Jesus Garces
+- Santiago Arboleda
 
 ---
 
