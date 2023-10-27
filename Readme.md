@@ -22,8 +22,16 @@ Siga estos pasos para utilizar y ejecutar el proyecto en su entorno local:
 1. Clona este repositorio en tu máquina local.
 2. Configura la base de datos y ajusta la configuración de la aplicación en el backend.
 3. Ejecuta el backend de Spring Boot.
-4. Navega a la carpeta de React y ejecuta la aplicación de React.
-5. Accede a la aplicación a través de tu navegador web.
+4. Navega a la carpeta de React y realiza las debidas 'npm' install.
+5. Ejecuta la aplicación de React.
+6. Accede a la aplicación a través de tu navegador web.
+
+## Requisitos de Instalación
+
+- Java SDK
+- Node.js
+- Git
+- React
 
 ## Contribuciones
 
