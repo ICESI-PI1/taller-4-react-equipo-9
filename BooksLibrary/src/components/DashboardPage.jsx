@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
 import Book from '../components/Books.jsx'
+import Login from '../components/LoginPage.jsx'
+import AuthorCreation from '../components/AuthorCreation.jsx';
 class MyComponent extends Component {
 
   handleShowBook = () => {
     ReactDOM.createRoot(document.getElementById('root')).render(
         <React.StrictMode>
             <Book />
+        </React.StrictMode>
+    );
+  }
+
+  handleShowLogin = () => {
+    ReactDOM.createRoot(document.getElementById('root')).render(
+        <React.StrictMode>
+            <Login />
+        </React.StrictMode>
+    );
+  }
+
+  handleShowAuthor = () => {
+    ReactDOM.createRoot(document.getElementById('root')).render(
+        <React.StrictMode>
+            <AuthorCreation />
         </React.StrictMode>
     );
   }
@@ -95,10 +113,10 @@ class MyComponent extends Component {
               <li data-xcoord="160px" onClick={() => this.handleShowBook()}>
                 Books
               </li>
-              <li data-xcoord="320px">
+              <li data-xcoord="320px" onClick={() => this.handleShowAuthor()}>
                 Authors
               </li>
-              <li data-xcoord="480px">
+              <li data-xcoord="480px" onClick={() => this.handleShowLogin()}>
                 Login
               </li>
             </ul>
