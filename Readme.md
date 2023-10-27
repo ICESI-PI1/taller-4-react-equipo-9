@@ -37,4 +37,4 @@ Siga estos pasos para utilizar y ejecutar el proyecto en su entorno local:
 
 ---
 
-¡Gracias por visitar nuestro proyecto "Taller 4 React"! Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros.
+¡Gracias por visitar nuestro proyecto "Taller 4 React"! Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros, mas detalles en el informe suministrado.
