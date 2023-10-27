@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
-import Book from '../components/Books.jsx'
+import Book from './CreateBook.jsx'
 import Login from '../components/LoginPage.jsx'
 import AuthorCreation from '../components/AuthorCreation.jsx';
 class MyComponent extends Component {
