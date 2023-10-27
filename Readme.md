@@ -45,10 +45,6 @@ Este proyecto, "Taller 4 React", es una aplicación que utiliza Spring Boot en e
 
 ¡Estamos abiertos a contribuciones! Si deseas colaborar en el proyecto, por favor envía una solicitud de extracción.
 
-## Licencia
-
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
-
 ---
 
 ¡Gracias por visitar nuestro proyecto "Taller 4 React"! Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros.
