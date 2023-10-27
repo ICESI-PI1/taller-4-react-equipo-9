@@ -1,6 +1,8 @@
-# Taller 4 React
+<p align="center">
+  <img src="https://www.icesi.edu.co/consejo-estudiantil/images/2021/09/09/logo-icesi-blanco.png" alt="Logo del Proyecto">
+</p>
 
-![Logo del Proyecto](https://www.icesi.edu.co/consejo-estudiantil/images/2021/09/09/logo-icesi-blanco.png)
+# Taller 4 React
 
 ## Descripción del Proyecto
 
