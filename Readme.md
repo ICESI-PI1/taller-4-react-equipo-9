@@ -1,6 +1,6 @@
 # Taller 4 React
 
-![Logo del Proyecto](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Logo_de_la_Universidad_ICESI.svg/2560px-Logo_de_la_Universidad_ICESI.svg.png)
+![Logo del Proyecto](https://www.icesi.edu.co/consejo-estudiantil/images/2021/09/09/logo-icesi-blanco.png)
 
 ## Descripción del Proyecto
 
