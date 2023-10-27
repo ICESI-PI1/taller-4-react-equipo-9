@@ -32,8 +32,6 @@ Este proyecto, "Taller 4 React", es una aplicación que utiliza Spring Boot en e
 - Java SDK
 - Node.js
 - Git
-- MongoDB (o la base de datos de tu elección)
-- ...
 
 ## Instrucciones de Instalación
 
