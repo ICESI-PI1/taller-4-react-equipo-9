@@ -2,8 +2,20 @@ import React, { useState, useEffect } from 'react';
 import axios from '../config/axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import ReactDOM from 'react-dom/client';
+import Dash from '../components/DashboardPage.jsx'
 
 function CreateBook() {
+
+  const [value, setValue] = useState(0);
+
+  const handleChangee = (event, newValue) => {
+    setValue(newValue);
+  };
+
   const [bookData, setBookData] = useState({
     title: '',
     publicationDate: '',
@@ -64,8 +76,38 @@ function CreateBook() {
     });
   };
 
+  const handleDashboard = () => {
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <React.StrictMode>
+        <Dash />
+      </React.StrictMode>
+    );
+  };
+
   return (
     <div style={styles.container}>
+      <Box
+        sx={{
+          maxWidth: { xs: 320, sm: 1000 },
+          bgcolor: 'background.paper',
+          margin: '0 auto', // Centrar el Box
+          padding: '20px', // Espacio alrededor del Box
+        }}
+      >
+        <Tabs
+          value={value}
+          onChange={handleChangee}
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
+        >
+          <Tab label="Back to Dashboard" onClick={handleDashboard}/>
+          <Tab label="Create Book" />
+          <Tab label="Update Book" />
+          <Tab label="Delete Book" />
+          <Tab label="Get Books List" />
+        </Tabs>
+      </Box>
       <h1>Crear Nuevo Libro</h1>
       <form style={styles.form}>
         <div style={styles.formGroup}>
