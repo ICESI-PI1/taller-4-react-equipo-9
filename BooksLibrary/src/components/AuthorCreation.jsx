@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Dash from '../components/DashboardPage.jsx'
 import axios from '../config/axios';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import ReactDOM from 'react-dom/client';
 
 function AuthorCreation() {
+  const [value, setValue] = useState(0);
+
+  const handleChangee = (event, newValue) => {
+    setValue(newValue);
+  };
+
   const [authorData, setAuthorData] = useState({
     name: '',
     nationality: '',
@@ -43,12 +54,43 @@ function AuthorCreation() {
     });
   };
 
+  const handleDashboard = () => {
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <React.StrictMode>
+        <Dash />
+      </React.StrictMode>
+    );
+  };
+
   return (
-    <div>
-      <h1>Create Author</h1>
+    <div style={styles.container}>
+      <Box
+        sx={{
+          maxWidth: { xs: 320, sm: 1000 },
+          bgcolor: 'background.paper',
+          margin: '0 auto', // Centrar el Box
+          padding: '20px', // Espacio alrededor del Box
+        }}
+      >
+        <Tabs
+          value={value}
+          onChange={handleChangee}
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
+        >
+          <Tab label="Back to Dashboard" onClick={handleDashboard}/>
+          <Tab label="Create Author" />
+          <Tab label="Update Author" />
+          <Tab label="Delete Author" />
+          <Tab label="Get Author List" />
+          <Tab label="Get Books of Author" />
+        </Tabs>
+      </Box>
+      <h1 style={styles.heading}>Create Author</h1>
       <form>
-        <div>
-          <label htmlFor="name">Author Name:</label>
+        <div style={styles.formGroup}>
+          <label htmlFor="name" style={styles.label}>Author Name:</label>
           <input
             type="text"
             id="name"
@@ -57,23 +99,58 @@ function AuthorCreation() {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label htmlFor="nationality">Nacionality:</label>
+        <div style={styles.formGroup}>
+          <label htmlFor="nationality" style={styles.label}>Nationality:</label>
           <input
             type="text"
             id="nationality"
             name="nationality"
             value={authorData.nationality}
             onChange={handleChange}
+            
           />
-        </div>
-        <button type="button" onClick={handleAuthorCreate}>
-          Create Author
+        </div> 
+        <button type="button" onClick={handleAuthorCreate}  style={styles.button}>
+          Create
         </button>
       </form>
       <ToastContainer /> {/* Contenedor de notificaciones */}
     </div>
   );
 }
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  heading: {
+    fontSize: '24px',
+    color: '#333',
+  },
+  formGroup: {
+    marginBottom: '20px',
+  },
+  label: {
+    display: 'block',
+    marginBottom: '5px',
+    fontWeight: 'bold',
+  },
+  input: {
+    width: '100%',
+    padding: '10px',
+    border: '1px solid #ccc',
+    borderRadius: '3px',
+  },
+  button: {
+    backgroundColor: '#007bff',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '3px',
+    padding: '10px 20px',
+    cursor: 'pointer',
+  },
+};
 
 export default AuthorCreation;
