@@ -13,7 +13,7 @@ import java.util.List;
 public class AuthorController {
     @Autowired
     private AuthorService authorService;
-
+    
     @GetMapping
     public List<Author> listAuthors() {
         return authorService.getAllAuthors();

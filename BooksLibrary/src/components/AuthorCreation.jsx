@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Dash from '../components/DashboardPage.jsx'
+import Dash from '../components/DashboardPage.jsx';
+import ShowAL from '../components/getListAuthor.jsx';
+import BooksAuthor from '../components/ShowAuthorBooks.jsx';
 import axios from '../config/axios';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -62,6 +64,22 @@ function AuthorCreation() {
     );
   };
 
+  const handleShowList = () => {
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <React.StrictMode>
+        <ShowAL />
+      </React.StrictMode>
+    );
+  };
+
+  const handleBooksOfAuthor = () => {
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <React.StrictMode>
+        <BooksAuthor />
+      </React.StrictMode>
+    );
+  };
+
   return (
     <div style={styles.container}>
       <Box
@@ -83,8 +101,8 @@ function AuthorCreation() {
           <Tab label="Create Author" />
           <Tab label="Update Author" />
           <Tab label="Delete Author" />
-          <Tab label="Get Author List" />
-          <Tab label="Get Books of Author" />
+          <Tab label="Get Author List" onClick={handleShowList}/>
+          <Tab label="Get Books of Author" onClick={handleBooksOfAuthor}/>
         </Tabs>
       </Box>
       <h1 style={styles.heading}>Create Author</h1>
