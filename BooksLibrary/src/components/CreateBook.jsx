@@ -6,7 +6,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import ReactDOM from 'react-dom/client';
-import Dash from '../components/DashboardPage.jsx'
+import Dash from '../components/DashboardPage.jsx';
+import ShowList from '../components/getBookList.jsx';
+import UpdateBooks from '../components/UpdateBook.jsx';
+import DeleteBook from '../components/DeleteBook.jsx';
 
 function CreateBook() {
 
@@ -19,15 +22,24 @@ function CreateBook() {
   const [bookData, setBookData] = useState({
     title: '',
     publicationDate: '',
-    authorId: 1, // Valor predeterminado para demostración, debes obtener la lista de autores desde la API.
+    author: {  // Author objeto que contiene el ID, nombre y nacionalidad
+      id: null, // ID del autor
+      name: '', // Nombre del autor
+      nationality: '', // Nacionalidad del autor
+    }
   });
 
   const [authors, setAuthors] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const getAuthors = () => {
     // Obtiene la lista de autores para mostrar en el formulario
-    axios.get('/authors')
+    const token = localStorage.getItem('token');
+    axios.get('/authors', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => {
         setAuthors(response.data);
         setLoading(false);
@@ -41,7 +53,7 @@ function CreateBook() {
           autoClose: 3000, // Duración en milisegundos
         });
       });
-  }, []);
+  }
 
   const handleCreateBook = () => {
     const token = localStorage.getItem('token');
@@ -70,16 +82,53 @@ function CreateBook() {
   };
 
   const handleChange = (e) => {
-    setBookData({
-      ...bookData,
-      [e.target.name]: e.target.value,
-    });
+    // Verifica si el nombre del campo es "author"
+    if (e.target.name === "author") {
+      const { author } = bookData;
+      // Verifica si el nombre del subcampo es "id", "name" o "nationality"
+      if (e.target.id === "id" || e.target.id === "name" || e.target.id === "nationality") {
+        author[e.target.id] = e.target.value;
+        setBookData({
+          ...bookData,
+          author: { ...author }
+        });
+      }
+    } else {
+      setBookData({
+        ...bookData,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
   const handleDashboard = () => {
     ReactDOM.createRoot(document.getElementById('root')).render(
       <React.StrictMode>
         <Dash />
+      </React.StrictMode>
+    );
+  };
+
+  const handleList = () => {
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <React.StrictMode>
+        <ShowList />
+      </React.StrictMode>
+    );
+  };
+
+  const handleUpdateBook = () => {
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <React.StrictMode>
+        <UpdateBooks />
+      </React.StrictMode>
+    );
+  };
+
+  const handleDelete = () => {
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <React.StrictMode>
+        <DeleteBook />
       </React.StrictMode>
     );
   };
@@ -101,18 +150,18 @@ function CreateBook() {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Back to Dashboard" onClick={handleDashboard}/>
+          <Tab label="Back to Dashboard" onClick={handleDashboard} />
           <Tab label="Create Book" />
-          <Tab label="Update Book" />
-          <Tab label="Delete Book" />
-          <Tab label="Get Books List" />
+          <Tab label="Update Book" onClick={handleUpdateBook}/>
+          <Tab label="Delete Book" onClick={handleDelete}/>
+          <Tab label="Get Books List" onClick={handleList} />
         </Tabs>
       </Box>
-      <h1>Crear Nuevo Libro</h1>
+      <h1>Create new Book</h1>
       <form style={styles.form}>
         <div style={styles.formGroup}>
           <label htmlFor="title" style={styles.label}>
-            Título:
+            Title:
             <input
               type="text"
               id="title"
@@ -125,7 +174,7 @@ function CreateBook() {
         </div>
         <div style={styles.formGroup}>
           <label htmlFor="publicationDate" style={styles.label}>
-            Fecha de Publicación:
+            Publication date:
             <input
               type="date"
               id="publicationDate"
@@ -137,31 +186,44 @@ function CreateBook() {
           </label>
         </div>
         <div style={styles.formGroup}>
-          <label htmlFor="authorId" style={styles.label}>
-            Autor:
-            <select
-              id="authorId"
-              name="authorId"
-              value={bookData.authorId}
+          <label htmlFor="author" style={styles.label}>
+            Author ID:
+            <input
+              type="number"
+              id="id"
+              name="author"
+              value={bookData.author.id}
               onChange={handleChange}
               style={styles.input}
-            >
-              {loading ? (
-                <option>Cargando autores...</option>
-              ) : (
-                authors.map((author) => (
-                  <option key={author.id} value={author.id}>
-                    {author.name}
-                  </option>
-                ))
-              )}
-            </select>
+            />
+          </label>
+          <label htmlFor="author" style={styles.label}>
+            Author name:
+            <input
+              type="text"
+              id="name"
+              name="author"
+              value={bookData.author.name}
+              onChange={handleChange}
+              style={styles.input}
+            />
+          </label>
+          <label htmlFor="author" style={styles.label}>
+            Author nationality:
+            <input
+              type="text"
+              id="nationality"
+              name="author"
+              value={bookData.author.nationality}
+              onChange={handleChange}
+              style={styles.input}
+            />
           </label>
         </div>
       </form>
       <div style={styles.buttonsContainer}>
         <button type="button" onClick={handleCreateBook} style={styles.createButton}>
-          Crear Libro
+          Create Book
         </button>
       </div>
       <ToastContainer /> {/* Contenedor de notificaciones */}
