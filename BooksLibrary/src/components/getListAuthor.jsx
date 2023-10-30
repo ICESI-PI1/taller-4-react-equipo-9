@@ -52,10 +52,13 @@ function AuthorList() {
   return (
     <body >
     <div>
-      <h2 onClick={back} style={styles.tryAgain}>Back to Authors main page</h2>
-      <h1>Authors List</h1>
+        <button type="button" onClick={back} style={styles.tryAgain}>
+            Go back
+        </button>
+
+      <h1 style={styles.title}>Authors List</h1>
       <button type="button" onClick={getAuthorsList} style={styles.createButton}>
-        Get List
+        Search
       </button>
       <p></p>
       {loading ? (
@@ -65,24 +68,24 @@ function AuthorList() {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Nationality</TableCell>
+                <TableCell style={styles.tableCell}>ID</TableCell>
+                <TableCell style={styles.tableCell}>Name</TableCell>
+                <TableCell style={styles.tableCell}>Nationality</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {authors.map((author) => (
                 <TableRow key={author.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell component="th" scope="row">
+                  <TableCell style={styles.tableComponent} component="th" scope="row">
                     {author.id}
                   </TableCell>
-                  <TableCell>{author.name}</TableCell>
-                  <TableCell>{author.nationality}</TableCell>
+                  <TableCell style={styles.tableComponent}>{author.name}</TableCell>
+                  <TableCell style={styles.tableComponent}>{author.nationality}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
-          
+
         ) : (
           <p >No Authors available.</p>
         )
@@ -96,8 +99,9 @@ function AuthorList() {
 export default AuthorList;
 
 const styles = {
+
     createButton: {
-      backgroundColor: 'blue', // Fondo negro
+      backgroundColor: 'green', // Fondo negro
       color: '#fff',
       border: 'none',
       borderRadius: '3px',
@@ -110,7 +114,27 @@ const styles = {
         color: '#000',
         fontStyle: 'italic',
     },
-    
+    title: {
+        backgroundColor: 'darkorange',
+        color: 'black',
+        textAlign: 'center',
+        fontFamily: 'Roboto',
+        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+        fontSize: '2em',
+        padding: '10px 0',
+        borderRadius: '10px',
+    },
+    tableCell: {
+        backgroundColor: 'orange',
+        color: 'black',
+        fontWeight: 'bold',
+
+    },
+    tableComponent: {
+        backgroundColor: 'white',
+        color: 'black',
+        fontWeight: 'bold',
+    }
   };
   
   

@@ -4,14 +4,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import Dash from '../components/DashboardPage.jsx';
 import ShowAL from '../components/getListAuthor.jsx';
 import BooksAuthor from '../components/ShowAuthorBooks.jsx';
+import DeleteAuthor from '../components/DeleteAuthor';
+import UpdateAuthor from '../components/UpdateAuthor';
 import axios from '../config/axios';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import ReactDOM from 'react-dom/client';
+import UpdateBooks from "./UpdateBook.jsx";
 
 function AuthorCreation() {
   const [value, setValue] = useState(0);
+
 
   const handleChangee = (event, newValue) => {
     setValue(newValue);
@@ -80,14 +84,31 @@ function AuthorCreation() {
     );
   };
 
+  const handleUpdateAuthor = () => {
+
+    ReactDOM.createRoot(document.getElementById('root')).render(
+        <React.StrictMode>
+          <UpdateAuthor />
+        </React.StrictMode>
+    );
+  };
+
+  const handleDeleteAuthor = () => {
+    ReactDOM.createRoot(document.getElementById('root')).render(
+        <React.StrictMode>
+          <DeleteAuthor />
+        </React.StrictMode>
+    );
+  };
+
   return (
     <div style={styles.container}>
       <Box
         sx={{
           maxWidth: { xs: 320, sm: 1000 },
           bgcolor: 'background.paper',
-          margin: '0 auto', // Centrar el Box
-          padding: '20px', // Espacio alrededor del Box
+          margin: '0 auto',
+          padding: '20px',
         }}
       >
         <Tabs
@@ -99,8 +120,8 @@ function AuthorCreation() {
         >
           <Tab label="Back to Dashboard" onClick={handleDashboard}/>
           <Tab label="Create Author" />
-          <Tab label="Update Author" />
-          <Tab label="Delete Author" />
+          <Tab label="Update Author" onClick={handleUpdateAuthor}/>
+          <Tab label="Delete Author" onClick={handleDeleteAuthor}/>
           <Tab label="Get Author List" onClick={handleShowList}/>
           <Tab label="Get Books of Author" onClick={handleBooksOfAuthor}/>
         </Tabs>
@@ -144,8 +165,14 @@ const styles = {
     alignItems: 'center',
   },
   heading: {
-    fontSize: '24px',
-    color: '#333',
+    backgroundColor: 'darkorange',
+    color: 'black',
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+    fontSize: '2em',
+    padding: '10px 0',
+    borderRadius: '10px',
   },
   formGroup: {
     marginBottom: '20px',
@@ -162,8 +189,8 @@ const styles = {
     borderRadius: '3px',
   },
   button: {
-    backgroundColor: '#007bff',
-    color: '#fff',
+    backgroundColor: 'green',
+    color: '#000',
     border: 'none',
     borderRadius: '3px',
     padding: '10px 20px',

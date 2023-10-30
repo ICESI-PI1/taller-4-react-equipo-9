@@ -51,7 +51,10 @@ function BookList() {
   return (
     <body >
     <div>
-      <h2 onClick={back} style={styles.tryAgain}>Back to Books main page</h2>
+        <button type="button" onClick={back} style={styles.tryAgain} >
+            Go Back
+        </button>
+
       <h1>Books List</h1>
       <button type="button" onClick={getBooksList} style={styles.createButton}>
         Get List
