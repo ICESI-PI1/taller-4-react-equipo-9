@@ -5,10 +5,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from '../config/axios';
 import DashboardPage from '../components/DashboardPage.jsx';
 
+
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const handleLogin = () => {
     const userData = {
       username: username,
@@ -46,6 +46,8 @@ function LoginPage() {
   };
 
   return (
+    <div>
+      
     <div style={styles.container}>
       <h1 style={styles.heading}>Authentication with JWT</h1>
       <form>
@@ -78,6 +80,7 @@ function LoginPage() {
         </button>
       </form>
       <ToastContainer /> {/* Contenedor de notificaciones */}
+    </div>
     </div>
   );
 }
