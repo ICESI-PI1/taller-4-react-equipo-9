@@ -6,8 +6,7 @@ import ReactDOM from 'react-dom/client';
 import Book from '../components/CreateBook.jsx';
 
 function UpdateBook() {
-  const [bookId, setBookId] = useState('');
-
+  const [bookId, setBookId] = useState(''); // Cambiado a string
   const [bookData, setBookData] = useState({
     title: '',
     publicationDate: '',
@@ -99,22 +98,21 @@ function UpdateBook() {
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>UPDATE BOOK</h1>
       <div>
-        <label htmlFor="bookId" style={styles.label}>ID Search:</label>
-
+        <label htmlFor="bookId" style={styles.label}>Book id for update:</label>
         <input
           type="text"
           id="bookId"
           name="bookId"
           value={bookId}
-          onChange={(e) => setBookId(e.target.value)}
+          onChange={(e) => setBookId(e.target.value)} // Cambiado aquí
           style={styles.input}
         />
         <button type="button" onClick={handleFind} style={styles.button}>
           Send
         </button>
       </div>
+      <h1>UPDATE BOOK</h1>
       <form>
         <div style={styles.formGroup}>
           <label htmlFor="title" style={styles.label}>Title:</label>
@@ -173,7 +171,7 @@ function UpdateBook() {
       </button>
       <p></p>
       <button type="button" onClick={back} >
-        Go Back
+        Back
       </button>
       <ToastContainer />
     </div>
@@ -188,28 +186,6 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
   },
-  title: {
-    backgroundColor: 'darkorange',
-    color: 'black',
-    textAlign: 'center',
-    fontFamily: 'Roboto',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
-    fontSize: '2em',
-    padding: '10px 0',
-    borderRadius: '10px',
-  },
-  inputContainer: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '20px',
-  },
-  input: {
-    width: '57%',
-    padding: '12px',
-    border: '4px solid #ccc',
-    borderRadius: '10px',
-  },
   formGroup: {
     marginBottom: '20px',
   },
@@ -218,10 +194,15 @@ const styles = {
     marginBottom: '5px',
     fontWeight: 'bold',
   },
+  input: {
+    width: '100%',
+    padding: '10px',
+    border: '1px solid #ccc',
+    borderRadius: '3px',
+  },
   button: {
     backgroundColor: 'green',
-    color: '#000',
-
+    color: '#fff',
     border: 'none',
     borderRadius: '3px',
     padding: '10px 20px',
