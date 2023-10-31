@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import axios from '../config/axios';
-import { toast, ToastContainer } from 'react-toastify';
+import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactDOM from 'react-dom/client';
 import Author from '../components/AuthorCreation.jsx';
@@ -11,13 +11,13 @@ function DeleteAuthor() {
     const back = () => {
         ReactDOM.createRoot(document.getElementById('root')).render(
             <React.StrictMode>
-                <Author />
+                <Author/>
             </React.StrictMode>
         );
     }
 
     const handleDeleteAuthor = () => {
-        if (window.confirm('¿Estás seguro de que deseas eliminar este autor?')) {
+        if (window.confirm('¿Estás seguro?')) {
             const token = localStorage.getItem('token');
 
             axios
@@ -59,7 +59,7 @@ function DeleteAuthor() {
             <button type="button" onClick={handleDeleteAuthor} style={styles.button}>
                 Delete
             </button>
-            <ToastContainer />
+            <ToastContainer/>
             <p></p>
             <button type="button" onClick={back}>
                 GO BACK
@@ -103,12 +103,12 @@ const styles = {
     },
     inputContainer: {
         display: 'flex',
-        justifyContent: 'space-between', // Alinea los elementos a la derecha
+        justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: '20px',
     },
     input: {
-        width: '57%', // Ajusta el ancho según tus preferencias
+        width: '57%',
         padding: '12px',
         border: '4px solid #ccc',
         borderRadius: '10px',

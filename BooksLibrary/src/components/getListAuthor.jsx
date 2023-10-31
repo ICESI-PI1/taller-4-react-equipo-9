@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from '../config/axios';
-import { toast, ToastContainer } from 'react-toastify';
+import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactDOM from 'react-dom/client';
 import AuthorP from '../components/AuthorCreation.jsx';
@@ -13,87 +13,87 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 function AuthorList() {
-  const [authors, setAuthors] = useState([]);
-  const [loading, setLoading] = useState(false);
+    const [authors, setAuthors] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-  const back = () => {
-    ReactDOM.createRoot(document.getElementById('root')).render(
-        <React.StrictMode>
-            <AuthorP />
-        </React.StrictMode>
+    const back = () => {
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <React.StrictMode>
+                <AuthorP/>
+            </React.StrictMode>
+        );
+    }
+
+    const getAuthorsList = () => {
+        setLoading(true);
+        const token = localStorage.getItem('token');
+
+        axios
+            .get('/authors', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            )
+            .then((response) => {
+                setAuthors(response.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error('Error al obtener la lista de autores:', error);
+                setLoading(false);
+                toast.warning('La lista de autores está vacía', {
+                    position: 'top-right',
+                    autoClose: 3000,
+                });
+            });
+    };
+
+    return (
+        <body>
+        <div>
+            <button type="button" onClick={back} style={styles.tryAgain}>
+                Go back
+            </button>
+
+            <h1 style={styles.title}>Authors List</h1>
+            <button type="button" onClick={getAuthorsList} style={styles.createButton}>
+                Search
+            </button>
+            <p></p>
+            {loading ? (
+                <p>Loading Authors...</p>
+            ) : (
+                authors.length > 0 ? (
+                    <Table sx={{minWidth: 650}} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell style={styles.tableCell}>ID</TableCell>
+                                <TableCell style={styles.tableCell}>Name</TableCell>
+                                <TableCell style={styles.tableCell}>Nationality</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {authors.map((author) => (
+                                <TableRow key={author.id} sx={{'&:last-child td, &:last-child th': {border: 0}}}>
+                                    <TableCell style={styles.tableComponent} component="th" scope="row">
+                                        {author.id}
+                                    </TableCell>
+                                    <TableCell style={styles.tableComponent}>{author.name}</TableCell>
+                                    <TableCell style={styles.tableComponent}>{author.nationality}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+
+                ) : (
+                    <p>No Authors available.</p>
+                )
+            )}
+            <ToastContainer/>
+        </div>
+        </body>
     );
-  }
-
-  const getAuthorsList = () => {
-    setLoading(true);
-    const token = localStorage.getItem('token');
-
-    axios
-      .get('/authors',{
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-      }
-      )
-      .then((response) => {
-        setAuthors(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error al obtener la lista de autores:', error);
-        setLoading(false);
-        toast.warning('La lista de autores está vacía', {
-          position: 'top-right',
-          autoClose: 3000,
-        });
-      });
-  };
-
-  return (
-    <body >
-    <div>
-        <button type="button" onClick={back} style={styles.tryAgain}>
-            Go back
-        </button>
-
-      <h1 style={styles.title}>Authors List</h1>
-      <button type="button" onClick={getAuthorsList} style={styles.createButton}>
-        Search
-      </button>
-      <p></p>
-      {loading ? (
-        <p>Loading Authors...</p>
-      ) : (
-        authors.length > 0 ? (
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell style={styles.tableCell}>ID</TableCell>
-                <TableCell style={styles.tableCell}>Name</TableCell>
-                <TableCell style={styles.tableCell}>Nationality</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {authors.map((author) => (
-                <TableRow key={author.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell style={styles.tableComponent} component="th" scope="row">
-                    {author.id}
-                  </TableCell>
-                  <TableCell style={styles.tableComponent}>{author.name}</TableCell>
-                  <TableCell style={styles.tableComponent}>{author.nationality}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-
-        ) : (
-          <p >No Authors available.</p>
-        )
-      )}
-      <ToastContainer />
-    </div>
-    </body>
-  );
 }
 
 export default AuthorList;
@@ -101,16 +101,16 @@ export default AuthorList;
 const styles = {
 
     createButton: {
-      backgroundColor: 'green', // Fondo negro
-      color: '#fff',
-      border: 'none',
-      borderRadius: '3px',
-      padding: '10px 20px',
-      cursor: 'pointer',
-      transition: 'background-color 0.3s', // Transición de color
+        backgroundColor: 'green',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '3px',
+        padding: '10px 20px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s',
     },
     tryAgain: {
-        backgroundColor: 'white', // Fondo negro
+        backgroundColor: 'white',
         color: '#000',
         fontStyle: 'italic',
     },
@@ -135,6 +135,6 @@ const styles = {
         color: 'black',
         fontWeight: 'bold',
     }
-  };
+};
   
   

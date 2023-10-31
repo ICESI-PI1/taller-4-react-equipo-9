@@ -17,7 +17,7 @@ function DeleteBook() {
     }
 
     const handleDeleteBook = () => {
-        if (window.confirm('¿Estás seguro de que deseas eliminar este libro?')) {
+        if (window.confirm('¿Estás seguro?')) {
             const token = localStorage.getItem('token');
 
             axios
@@ -27,7 +27,7 @@ function DeleteBook() {
                     },
                 })
                 .then(() => {
-                    toast.success('Succes', {
+                    toast.success('Success', {
                         position: 'top-right',
                         autoClose: 3000,
                     });
@@ -90,12 +90,12 @@ const styles = {
     },
     inputContainer: {
         display: 'flex',
-        justifyContent: 'space-between', // Alinea los elementos a la derecha
+        justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: '20px',
     },
     input: {
-        width: '57%', // Ajusta el ancho según tus preferencias
+        width: '57%',
         padding: '12px',
         border: '4px solid #ccc',
         borderRadius: '10px',

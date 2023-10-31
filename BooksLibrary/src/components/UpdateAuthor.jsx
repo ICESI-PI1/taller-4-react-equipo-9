@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import axios from '../config/axios';
-import { toast, ToastContainer } from 'react-toastify';
+import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactDOM from "react-dom";
 import Author from "./AuthorCreation.jsx";
@@ -15,7 +15,7 @@ function UpdateAuthor() {
     const back = () => {
         ReactDOM.createRoot(document.getElementById('root')).render(
             <React.StrictMode>
-                <Author />
+                <Author/>
             </React.StrictMode>
         );
     }
@@ -30,7 +30,7 @@ function UpdateAuthor() {
                 },
             })
             .then((response) => {
-                const { name, nationality } = response.data;
+                const {name, nationality} = response.data;
                 setAuthorData({
                     name,
                     nationality,
@@ -122,10 +122,10 @@ function UpdateAuthor() {
                 Update
             </button>
             <p></p>
-            <button type="button" onClick={back} >
+            <button type="button" onClick={back}>
                 Go Back
             </button>
-            <ToastContainer />
+            <ToastContainer/>
         </div>
     );
 }
@@ -158,12 +158,12 @@ const styles = {
     },
     inputContainer: {
         display: 'flex',
-        justifyContent: 'space-between', // Alinea los elementos a la derecha
+        justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: '20px',
     },
     input: {
-        width: '47%', // Ajusta el ancho según tus preferencias
+        width: '47%',
         padding: '11px',
         border: '4px solid #ccc',
         borderRadius: '10px',

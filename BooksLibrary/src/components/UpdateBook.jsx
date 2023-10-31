@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom/client';
 import Book from '../components/CreateBook.jsx';
 
 function UpdateBook() {
-  const [bookId, setBookId] = useState(''); // Cambiado a string
+  const [bookId, setBookId] = useState('');
   const [bookData, setBookData] = useState({
     title: '',
     publicationDate: '',
@@ -106,7 +106,7 @@ function UpdateBook() {
           id="bookId"
           name="bookId"
           value={bookId}
-          onChange={(e) => setBookId(e.target.value)} // Cambiado aquí
+          onChange={(e) => setBookId(e.target.value)}
           style={styles.input}
         />
         <button type="button" onClick={handleFind} style={styles.button}>
@@ -199,12 +199,12 @@ const styles = {
   },
   inputContainer: {
     display: 'flex',
-    justifyContent: 'space-between', // Alinea los elementos a la derecha
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: '20px',
   },
   input: {
-    width: '57%', // Ajusta el ancho según tus preferencias
+    width: '57%',
     padding: '12px',
     border: '4px solid #ccc',
     borderRadius: '10px',

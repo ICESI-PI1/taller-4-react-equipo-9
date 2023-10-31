@@ -43,13 +43,13 @@ class MyComponent extends Component {
             width: 100%;
             height: 100%;
             background: #000; 
-            background: -moz-linear-gradient(top, #000 0%, #FFA500 100%); /* Cambia los colores del degradado */
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000), color-stop(100%, #FFA500)); /* Cambia los colores del degradado */
-            background: -webkit-linear-gradient(top, #000 0%, #FFA500 100%); /* Cambia los colores del degradado */
-            background: -o-linear-gradient(top, #000 0%, #FFA500 100%); /* Cambia los colores del degradado */
-            background: -ms-linear-gradient(top, #000 0%, #FFA500 100%); /* Cambia los colores del degradado */
-            background: linear-gradient(to bottom, #000 0%, #FFA500 100%); /* Cambia los colores del degradado */
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000', endColorstr='#FFA500', GradientType=0); /* Cambia los colores del degradado */
+            background: -moz-linear-gradient(top, #000 0%, #FFA500 100%); 
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000), color-stop(100%, #FFA500)); 
+            background: -webkit-linear-gradient(top, #000 0%, #FFA500 100%); 
+            background: -o-linear-gradient(top, #000 0%, #FFA500 100%); 
+            background: -ms-linear-gradient(top, #000 0%, #FFA500 100%); 
+            background: linear-gradient(to bottom, #000 0%, #FFA500 100%); 
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000', endColorstr='#FFA500', GradientType=0); 
             }
 
             section {
