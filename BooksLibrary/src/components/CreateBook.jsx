@@ -247,7 +247,6 @@ function CreateBook() {
             <ToastContainer/>
         </div>
     );
-}
 
 const styles = {
     container: {

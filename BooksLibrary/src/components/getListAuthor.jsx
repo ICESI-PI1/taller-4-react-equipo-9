@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect} from 'react';
 import axios from '../config/axios';
 import {toast, ToastContainer} from 'react-toastify';
@@ -13,6 +14,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 function AuthorList() {
+
     const [authors, setAuthors] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -99,7 +101,6 @@ function AuthorList() {
 export default AuthorList;
 
 const styles = {
-
     createButton: {
         backgroundColor: 'green',
         color: '#fff',

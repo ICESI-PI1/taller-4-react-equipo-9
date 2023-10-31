@@ -64,11 +64,11 @@ function DeleteBook() {
             </button>
         </div>
     );
-}
-
+ 
 export default DeleteBook;
 
 const styles = {
+
     button: {
         backgroundColor: 'red',
         color: '#000',
@@ -100,4 +100,21 @@ const styles = {
         border: '4px solid #ccc',
         borderRadius: '10px',
     },
+
+  input: {
+    width: '100%',
+    padding: '10px',
+    border: '1px solid #ccc',
+    borderRadius: '3px',
+  },
+  button: {
+    backgroundColor: 'red',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '3px',
+    padding: '10px 20px',
+    cursor: 'pointer',
+    marginTop: '10px',
+  },
+
 };

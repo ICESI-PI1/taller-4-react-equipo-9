@@ -7,6 +7,7 @@ import Book from '../components/CreateBook.jsx';
 
 function UpdateBook() {
   const [bookId, setBookId] = useState('');
+
   const [bookData, setBookData] = useState({
     title: '',
     publicationDate: '',
@@ -101,6 +102,7 @@ function UpdateBook() {
       <h1 style={styles.title}>UPDATE BOOK</h1>
       <div>
         <label htmlFor="bookId" style={styles.label}>ID Search:</label>
+
         <input
           type="text"
           id="bookId"
@@ -113,7 +115,6 @@ function UpdateBook() {
           Send
         </button>
       </div>
-
       <form>
         <div style={styles.formGroup}>
           <label htmlFor="title" style={styles.label}>Title:</label>
@@ -220,6 +221,7 @@ const styles = {
   button: {
     backgroundColor: 'green',
     color: '#000',
+
     border: 'none',
     borderRadius: '3px',
     padding: '10px 20px',

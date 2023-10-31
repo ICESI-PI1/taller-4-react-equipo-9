@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from '../config/axios';
 import DashboardPage from '../components/DashboardPage.jsx';
 
+
 function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -20,7 +21,6 @@ function LoginPage() {
                 const token = response.data.token;
                 console.log('Token JWT recibido:', token);
                 localStorage.setItem('token', token);
-
                 toast.success('Inicio de sesión exitoso', {
                     position: 'top-right',
                     autoClose: 3000,
@@ -43,7 +43,6 @@ function LoginPage() {
 
     return (
         <div>
-
             <div style={styles.container}>
                 <h1 style={styles.heading}>Authentication with JWT</h1>
                 <form>
