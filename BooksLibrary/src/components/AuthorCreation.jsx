@@ -27,8 +27,20 @@ function AuthorCreation() {
     });
 
     const handleAuthorCreate = () => {
+        // Verifica que los campos no estén vacíos y que no contengan números
+        if (!authorData.name.trim() || !authorData.nationality.trim()) {
+            toast.error('Los datos del autor no pueden estar vacíos', {
+                position: 'top-right',
+                autoClose: 3000,
+            });
+            return;
+        }
+
+        // Puedes agregar verificación adicional aquí para el campo "nationality" si es necesario.
+
         const token = localStorage.getItem('token');
         console.log(token);
+
         axios
             .post('/authors', authorData, {
                 headers: {
@@ -37,7 +49,6 @@ function AuthorCreation() {
             })
             .then((response) => {
                 console.log('Autor creado:', response.data);
-                // Mostrar notificación de éxito
                 toast.success('Autor creado con éxito', {
                     position: 'top-right',
                     autoClose: 3000,
@@ -45,14 +56,12 @@ function AuthorCreation() {
             })
             .catch((error) => {
                 console.error('Error al crear el autor:', error);
-
                 toast.error('Error al crear el autor', {
                     position: 'top-right',
                     autoClose: 3000,
                 });
             });
     };
-
     const handleChange = (e) => {
         setAuthorData({
             ...authorData,

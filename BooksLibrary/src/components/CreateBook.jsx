@@ -56,6 +56,26 @@ function CreateBook() {
     }
 
     const handleCreateBook = () => {
+        // Verificar que los campos no estén vacíos
+        if (!bookData.title.trim() || !bookData.author.name.trim()) {
+            toast.error('El título y el nombre del autor no pueden estar vacíos', {
+                position: 'top-right',
+                autoClose: 3000,
+            });
+            return;
+        }
+
+        // Verificar que la fecha no sea mayor que el día de hoy
+        const selectedDate = new Date(bookData.publicationDate);
+        const currentDate = new Date();
+        if (selectedDate > currentDate) {
+            toast.error('La fecha de publicación no puede ser mayor que el día de hoy', {
+                position: 'top-right',
+                autoClose: 3000,
+            });
+            return;
+        }
+
         const token = localStorage.getItem('token');
         axios
             .post('/books', bookData, {
@@ -65,7 +85,6 @@ function CreateBook() {
             })
             .then((response) => {
                 console.log('Libro creado:', response.data);
-
                 toast.success('Libro creado con éxito', {
                     position: 'top-right',
                     autoClose: 3000,
@@ -73,7 +92,6 @@ function CreateBook() {
             })
             .catch((error) => {
                 console.error('Error al crear el libro:', error);
-
                 toast.error('Error al crear el libro', {
                     position: 'top-right',
                     autoClose: 3000,
