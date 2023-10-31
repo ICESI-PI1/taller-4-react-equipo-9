@@ -1,4 +1,4 @@
-# Taller 4 React (Compilar en rama 'Santiago')
+# Taller 4 React (Compilar en rama 'Main')
 
 ## Descripción del Proyecto
 
