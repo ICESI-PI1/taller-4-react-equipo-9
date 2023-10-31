@@ -1,53 +1,55 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom/client';
 import Book from './CreateBook.jsx'
 import Login from '../components/LoginPage.jsx'
 import AuthorCreation from '../components/AuthorCreation.jsx';
+
+
 class MyComponent extends Component {
 
-  handleShowBook = () => {
-    ReactDOM.createRoot(document.getElementById('root')).render(
-        <React.StrictMode>
-            <Book />
-        </React.StrictMode>
-    );
-  }
+    handleShowBook = () => {
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <React.StrictMode>
+                <Book/>
+            </React.StrictMode>
+        );
+    }
 
-  handleShowLogin = () => {
-    ReactDOM.createRoot(document.getElementById('root')).render(
-        <React.StrictMode>
-            <Login />
-        </React.StrictMode>
-    );
-  }
+    handleShowLogin = () => {
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <React.StrictMode>
+                <Login/>
+            </React.StrictMode>
+        );
+    }
 
-  handleShowAuthor = () => {
-    ReactDOM.createRoot(document.getElementById('root')).render(
-        <React.StrictMode>
-            <AuthorCreation />
-        </React.StrictMode>
-    );
-  }
+    handleShowAuthor = () => {
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <React.StrictMode>
+                <AuthorCreation/>
+            </React.StrictMode>
+        );
+    }
 
-  render() {
-    return (
-      <div>
-        <style>
-          {`
+    render() {
+        return (
+            <div>
+                <style>
+                    {`
             #bg {
               position: fixed;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-              background: #38a8d1;
-              background: -moz-linear-gradient(top, #38a8d1 0%, #34bc9a 36%, #34bc9a 57%, #8645f7 100%);
-              background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #38a8d1), color-stop(36%, #34bc9a), color-stop(57%, #34bc9a), color-stop(100%, #8645f7));
-              background: -webkit-linear-gradient(top, #38a8d1 0%, #34bc9a 36%, #34bc9a 57%, #8645f7 100%);
-              background: -o-linear-gradient(top, #38a8d1 0%, #34bc9a 36%, #34bc9a 57%, #8645f7 100%);
-              background: -ms-linear-gradient(top, #38a8d1 0%, #34bc9a 36%, #34bc9a 57%, #8645f7 100%);
-              background: linear-gradient(to bottom, #38a8d1 0%, #34bc9a 36%, #34bc9a 57%, #8645f7 100%);
-              filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#38a8d1', endColorstr='#8645f7', GradientType=0);
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #000; 
+            background: -moz-linear-gradient(top, #000 0%, #FFA500 100%); 
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000), color-stop(100%, #FFA500)); 
+            background: -webkit-linear-gradient(top, #000 0%, #FFA500 100%); 
+            background: -o-linear-gradient(top, #000 0%, #FFA500 100%); 
+            background: -ms-linear-gradient(top, #000 0%, #FFA500 100%); 
+            background: linear-gradient(to bottom, #000 0%, #FFA500 100%); 
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000', endColorstr='#FFA500', GradientType=0); 
             }
 
             section {
@@ -76,7 +78,7 @@ class MyComponent extends Component {
             }
 
             nav ul li:hover {
-              background: rgba(255, 255, 255, 0.1);
+              background: rgba(60, 65, 60, 0.1);
             }
 
             nav ul {
@@ -98,33 +100,35 @@ class MyComponent extends Component {
             }
 
             .active {
-              color: rgba(55, 186, 177, 1);
+              color: rgba(240, 240, 240);
+              backgraound: black;
             }
+            
+
           `}
-        </style>
-        <div id="bg"></div>
-        <section>
-          <nav>
-            <div></div>
-            <ul>
-              <li data-xcoord="0px" className="active" onClick={() => this.handleNavClick("0px")}>
-                Home
-              </li>
-              <li data-xcoord="160px" onClick={() => this.handleShowBook()}>
-                Books
-              </li>
-              <li data-xcoord="320px" onClick={() => this.handleShowAuthor()}>
-                Authors
-              </li>
-              <li data-xcoord="480px" onClick={() => this.handleShowLogin()}>
-                Login
-              </li>
-            </ul>
-          </nav>
-        </section>
-      </div>
-    );
-  }
+                </style>
+                <div id="bg"></div>
+                <section>
+                    <nav>
+                        <ul>
+                            <li data-xcoord="0px" className="active" onClick={() => this.handleNavClick("0px")}>
+                                Home Page
+                            </li>
+                            <li data-xcoord="160px" onClick={() => this.handleShowBook()}>
+                                Books
+                            </li>
+                            <li data-xcoord="320px" onClick={() => this.handleShowAuthor()}>
+                                Authors
+                            </li>
+                            <li data-xcoord="480px" onClick={() => this.handleShowLogin()}>
+                                End Sesion
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+            </div>
+        );
+    }
 }
 
 export default MyComponent;
