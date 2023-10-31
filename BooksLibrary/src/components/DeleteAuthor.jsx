@@ -71,12 +71,6 @@ function DeleteAuthor() {
 export default DeleteAuthor;
 
 const styles = {
-    input: {
-        width: '20%',
-        padding: '10px',
-        border: '1px solid #ccc',
-        borderRadius: '3px',
-    },
     label: {
         display: 'block',
         marginBottom: '4px',
@@ -96,7 +90,7 @@ const styles = {
         backgroundColor: 'red',
         color: '#fff',
         border: 'none',
-        borderRadius: '3px',
+        borderRadius: '10px',
         padding: '10px 20px',
         cursor: 'pointer',
         marginTop: '10px',
@@ -106,5 +100,17 @@ const styles = {
         borderRadius: '10px',
         padding: '10px',
         marginTop: '20px',
+    },
+    inputContainer: {
+        display: 'flex',
+        justifyContent: 'space-between', // Alinea los elementos a la derecha
+        alignItems: 'center',
+        marginBottom: '20px',
+    },
+    input: {
+        width: '57%', // Ajusta el ancho según tus preferencias
+        padding: '12px',
+        border: '4px solid #ccc',
+        borderRadius: '10px',
     },
 };

@@ -157,7 +157,7 @@ function CreateBook() {
           <Tab label="Get Books List" onClick={handleList} />
         </Tabs>
       </Box>
-      <h1>Create new Book</h1>
+      <h1 style={styles.title}>Create new Book</h1>
       <form style={styles.form}>
         <div style={styles.formGroup}>
           <label htmlFor="title" style={styles.label}>
@@ -237,6 +237,16 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
   },
+  title: {
+    backgroundColor: 'darkorange',
+    color: 'black',
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+    fontSize: '2em',
+    padding: '10px 0',
+    borderRadius: '10px',
+  },
   form: {
     display: 'flex',
     flexDirection: 'column',
@@ -260,10 +270,10 @@ const styles = {
     justifyContent: 'center', // Centra el botón
   },
   createButton: {
-    backgroundColor: 'black', // Fondo negro
-    color: '#fff',
+    backgroundColor: 'green', // Fondo negro
+    color: '#000',
     border: 'none',
-    borderRadius: '3px',
+    borderRadius: '10px',
     padding: '10px 20px',
     cursor: 'pointer',
     transition: 'background-color 0.3s', // Transición de color

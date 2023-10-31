@@ -55,7 +55,7 @@ function BookList() {
             Go Back
         </button>
 
-      <h1>Books List</h1>
+      <h1 style={styles.title}>Books List</h1>
       <button type="button" onClick={getBooksList} style={styles.createButton}>
         Get List
       </button>
@@ -67,19 +67,19 @@ function BookList() {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell>Title</TableCell>
-                <TableCell>Publication Date</TableCell>
+                <TableCell style={styles.tableCell}>ID</TableCell>
+                <TableCell style={styles.tableCell}>Title</TableCell>
+                <TableCell style={styles.tableCell}>Publication Date</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {books.map((book) => (
                 <TableRow key={book.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell component="th" scope="row">
+                  <TableCell style={styles.tableComponent} component="th" scope="row">
                     {book.id}
                   </TableCell>
-                  <TableCell>{book.title}</TableCell>
-                  <TableCell>{book.publicationDate}</TableCell>
+                  <TableCell style={styles.tableComponent}>{book.title}</TableCell>
+                  <TableCell style={styles.tableComponent}>{book.publicationDate}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -98,7 +98,7 @@ export default BookList;
 
 const styles = {
     createButton: {
-      backgroundColor: 'blue', // Fondo negro
+      backgroundColor: 'green', // Fondo negro
       color: '#fff',
       border: 'none',
       borderRadius: '3px',
@@ -107,8 +107,29 @@ const styles = {
       transition: 'background-color 0.3s', // Transición de color
     },
     tryAgain: {
-        backgroundColor: 'white', // Fondo negro
-        color: '#000',
+        backgroundColor: 'black', // Fondo negro
+        color: '#fff',
         fontStyle: 'italic',
     },
+    title: {
+        backgroundColor: 'darkorange',
+        color: 'black',
+        textAlign: 'center',
+        fontFamily: 'Roboto',
+        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+        fontSize: '2em',
+        padding: '10px 0',
+        borderRadius: '10px',
+    },
+    tableCell: {
+        backgroundColor: 'orange',
+        color: 'black',
+        fontWeight: 'bold',
+
+    },
+    tableComponent: {
+        backgroundColor: 'white',
+        color: 'black',
+        fontWeight: 'bold',
+    }
 };

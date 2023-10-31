@@ -98,8 +98,9 @@ function UpdateBook() {
 
   return (
     <div style={styles.container}>
+      <h1 style={styles.title}>UPDATE BOOK</h1>
       <div>
-        <label htmlFor="bookId" style={styles.label}>Book id for update:</label>
+        <label htmlFor="bookId" style={styles.label}>ID Search:</label>
         <input
           type="text"
           id="bookId"
@@ -112,7 +113,7 @@ function UpdateBook() {
           Send
         </button>
       </div>
-      <h1>UPDATE BOOK</h1>
+
       <form>
         <div style={styles.formGroup}>
           <label htmlFor="title" style={styles.label}>Title:</label>
@@ -171,7 +172,7 @@ function UpdateBook() {
       </button>
       <p></p>
       <button type="button" onClick={back} >
-        Back
+        Go Back
       </button>
       <ToastContainer />
     </div>
@@ -186,6 +187,28 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
   },
+  title: {
+    backgroundColor: 'darkorange',
+    color: 'black',
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+    fontSize: '2em',
+    padding: '10px 0',
+    borderRadius: '10px',
+  },
+  inputContainer: {
+    display: 'flex',
+    justifyContent: 'space-between', // Alinea los elementos a la derecha
+    alignItems: 'center',
+    marginBottom: '20px',
+  },
+  input: {
+    width: '57%', // Ajusta el ancho según tus preferencias
+    padding: '12px',
+    border: '4px solid #ccc',
+    borderRadius: '10px',
+  },
   formGroup: {
     marginBottom: '20px',
   },
@@ -194,15 +217,9 @@ const styles = {
     marginBottom: '5px',
     fontWeight: 'bold',
   },
-  input: {
-    width: '100%',
-    padding: '10px',
-    border: '1px solid #ccc',
-    borderRadius: '3px',
-  },
   button: {
     backgroundColor: 'green',
-    color: '#fff',
+    color: '#000',
     border: 'none',
     borderRadius: '3px',
     padding: '10px 20px',
