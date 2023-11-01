@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://www.icesi.edu.co/consejo-estudiantil/images/2021/09/09/logo-icesi-blanco.png" alt="Logo del Proyecto">
-</p>
-
 # Taller 4 React
 
 ## Descripción del Proyecto
@@ -28,13 +24,13 @@ Siga estos pasos para utilizar y ejecutar el proyecto en su entorno local:
 
 ## Requisitos de Instalación
 
-- Java SDK
+- Java SDK 17
 - Node.js
 - Git
 
 ## Tecnologias Usadas
-- SpringBoot
-- React
+- SpringBoot 2.1.1
+- React jsx
 - JWT
 
 ## Contribuciones
