@@ -1,4 +1,8 @@
-# Taller 4 React (Compilar en rama 'Compilar')
+<p align="center">
+  <img src="https://www.icesi.edu.co/consejo-estudiantil/images/2021/09/09/logo-icesi-blanco.png" alt="Logo del Proyecto">
+</p>
+
+# Taller 4 React
 
 ## Descripción del Proyecto
 
