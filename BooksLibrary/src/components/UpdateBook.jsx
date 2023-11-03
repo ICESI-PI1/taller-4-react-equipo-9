@@ -63,18 +63,32 @@ function UpdateBook() {
         },
       })
       .then((response) => {
-        console.log('Libro actualizado:', response.data);
-        toast.success('Libro actualizado con éxito', {
-          position: 'top-right',
-          autoClose: 3000,
-        });
+          if (response.status === 200) {
+          console.log('Libro actualizado:', response.data);
+          toast.success('Libro actualizado con éxito', {
+            position: 'top-right',
+            autoClose: 3000,
+          });
+        } 
       })
       .catch((error) => {
-        console.error('Error al actualizar el libro:', error);
-        toast.error('Error al actualizar el libro', {
-          position: 'top-right',
-          autoClose: 3000,
-        });
+
+        if (error.response.status === 400) {
+          toast.error('Error en la solicitud. Verifique los datos proporcionados.', {
+              position: 'top-right',
+              autoClose: 3000,
+          });
+      } else if (error.response.status === 401) {
+          toast.error('No autorizado. Inicie sesión nuevamente.', {
+              position: 'top-right',
+              autoClose: 3000,
+          });
+      } else {
+          toast.error('Error al actualizar el autor', {
+              position: 'top-right',
+              autoClose: 3000,
+          });
+      }
       });
   };
 

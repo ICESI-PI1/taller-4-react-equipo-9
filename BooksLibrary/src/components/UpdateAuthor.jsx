@@ -47,7 +47,7 @@ function UpdateAuthor() {
 
     const handleUpdateAuthor = () => {
         const token = localStorage.getItem('token');
-
+    
         axios
             .put(`/authors/${authorId}`, authorData, {
                 headers: {
@@ -55,18 +55,39 @@ function UpdateAuthor() {
                 },
             })
             .then((response) => {
-                console.log('Autor actualizado:', response.data);
-                toast.success('Autor actualizado con éxito', {
-                    position: 'top-right',
-                    autoClose: 300,
-                });
+                if (response.status === 200) {
+                    console.log('Autor actualizado:', response.data);
+                    toast.success('Autor actualizado con éxito', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                    });
+                } 
             })
             .catch((error) => {
                 console.error('Error al actualizar el autor:', error);
-                toast.error('Error al actualizar el autor', {
-                    position: 'top-right',
-                    autoClose: 300,
-                });
+                if (error.response) {
+                    if (error.response.status === 400) {
+                        toast.error('Error en la solicitud. Verifique los datos proporcionados.', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    } else if (error.response.status === 401) {
+                        toast.error('No autorizado. Inicie sesión nuevamente.', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    } else {
+                        toast.error('Error al actualizar el autor', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    }
+                } else {
+                    toast.error('Error de red. Por favor, inténtelo de nuevo más tarde.', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                    });
+                }
             });
     };
 

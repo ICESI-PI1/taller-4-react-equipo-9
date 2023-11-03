@@ -19,30 +19,49 @@ function DeleteAuthor() {
     const handleDeleteAuthor = () => {
         if (window.confirm('¿Estás seguro?')) {
             const token = localStorage.getItem('token');
-
+    
             axios
                 .delete(`/authors/${authorId}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 })
-                .then(() => {
-                    toast.success('Succes', {
-                        position: 'top-right',
-                        autoClose: 300,
-                    });
-
-
+                .then((response) => {
+                    if (response.status === 200) {
+                        toast.success('Autor eliminado con éxito', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    } 
                 })
                 .catch((error) => {
-                    console.error('El autor no existe:', error);
-                    toast.error('El autor no existe', {
-                        position: 'top-right',
-                        autoClose: 2000,
-                    });
+                    console.error('Error al eliminar el autor:', error);
+                    if (error.response) {
+                        if (error.response.status === 404) {
+                            toast.error('Autor no encontrado. Verifique el ID del autor.', {
+                                position: 'top-right',
+                                autoClose: 3000,
+                            });
+                        } else if (error.response.status === 403) {
+                            toast.error('No autorizado para eliminar el autor. Inicie sesión nuevamente.', {
+                                position: 'top-right',
+                                autoClose: 3000,
+                            });
+                        } else {
+                            toast.error('Error al eliminar el autor', {
+                                position: 'top-right',
+                                autoClose: 3000,
+                            });
+                        }
+                    } else {
+                        toast.error('Error de red. Por favor, inténtelo de nuevo más tarde.', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    }
                 });
         }
-    };
+    };    
 
     return (
         <div>

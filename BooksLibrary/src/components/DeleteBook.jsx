@@ -19,29 +19,50 @@ function DeleteBook() {
     const handleDeleteBook = () => {
         if (window.confirm('¿Estás seguro?')) {
             const token = localStorage.getItem('token');
-
+    
             axios
                 .delete(`/books/${bookId}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 })
-                .then(() => {
-                    toast.success('Success', {
-                        position: 'top-right',
-                        autoClose: 3000,
-                    });
+                .then((response) => {
+                    if (response.status === 200) {
+                        toast.success('Libro eliminado con éxito', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    }
                 })
                 .catch((error) => {
                     console.error('Error al eliminar el libro:', error);
-                    toast.error('Error al eliminar el libro', {
-                        position: 'top-right',
-                        autoClose: 3000,
-                    });
+                    if (error.response) {
+                        if (error.response.status === 404) {
+                            toast.error('Libro no encontrado. Verifique el ID del libro.', {
+                                position: 'top-right',
+                                autoClose: 3000,
+                            });
+                        } else if (error.response.status === 403) {
+                            toast.error('No autorizado para eliminar el libro. Inicie sesión nuevamente.', {
+                                position: 'top-right',
+                                autoClose: 3000,
+                            });
+                        } else {
+                            toast.error('Error al eliminar el libro', {
+                                position: 'top-right',
+                                autoClose: 3000,
+                            });
+                        }
+                    } else {
+                        toast.error('Error de red. Por favor, inténtelo de nuevo más tarde.', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    }
                 });
         }
     };
-
+    
     return (
         <div>
             <h1 style={styles.title}>Delete Book</h1>

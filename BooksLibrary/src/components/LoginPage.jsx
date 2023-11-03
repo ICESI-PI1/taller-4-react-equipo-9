@@ -17,27 +17,48 @@ function LoginPage() {
         axios
             .post('/authenticate', userData)
             .then((response) => {
-                const token = response.data.token;
-                console.log('Token JWT recibido:', token);
-                localStorage.setItem('token', token);
 
-                toast.success('Inicio de sesión exitoso', {
-                    position: 'top-right',
-                    autoClose: 3000,
-                });
-
-                ReactDOM.createRoot(document.getElementById('root')).render(
+                if (response.status === 200) {
+                        toast.success('Inicio de sesión exitoso', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                    });
+                    const token = response.data.token;
+                    console.log('Token JWT recibido:', token);
+                    localStorage.setItem('token', token);
+                    ReactDOM.createRoot(document.getElementById('root')).render(
                     <React.StrictMode>
                         <DashboardPage/>
                     </React.StrictMode>
-                );
+                    );
+                }
+
             })
             .catch((error) => {
                 console.error('Error de autenticación:', error);
-                toast.error('Error de inicio de sesión', {
-                    position: 'top-right',
-                    autoClose: 3000,
-                });
+                if (error.response) {
+                    if (error.response.status === 401) {
+                        toast.error('Credenciales incorrectas. Por favor, inténtelo de nuevo.', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    } else if (error.response.status === 500) {
+                        toast.error('Error interno del servidor. Por favor, intente de nuevo más tarde.', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    } else {
+                        toast.error('Error. Por favor, intente de nuevo más tarde.', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        })
+                    }
+                } else {
+                    toast.error('Error de red. Por favor, intente de nuevo más tarde.', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                    });
+                }
             });
     };
 

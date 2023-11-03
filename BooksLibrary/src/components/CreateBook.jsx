@@ -64,7 +64,7 @@ function CreateBook() {
             });
             return;
         }
-
+    
         // Verificar que la fecha no sea mayor que el día de hoy
         const selectedDate = new Date(bookData.publicationDate);
         const currentDate = new Date();
@@ -75,7 +75,7 @@ function CreateBook() {
             });
             return;
         }
-
+    
         const token = localStorage.getItem('token');
         axios
             .post('/books', bookData, {
@@ -84,20 +84,41 @@ function CreateBook() {
                 },
             })
             .then((response) => {
-                console.log('Libro creado:', response.data);
-                toast.success('Libro creado con éxito', {
-                    position: 'top-right',
-                    autoClose: 3000,
-                });
+                if (response.status === 200) {
+                    console.log('Libro creado:', response.data);
+                    toast.success('Libro creado con éxito', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                    });
+                }
             })
             .catch((error) => {
                 console.error('Error al crear el libro:', error);
-                toast.error('Error al crear el libro', {
-                    position: 'top-right',
-                    autoClose: 3000,
-                });
+                if (error.response) {
+                    if (error.response.status === 400) {
+                        toast.error('Error en la solicitud. Verifique los datos proporcionados.', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    } else if (error.response.status === 401) {
+                        toast.error('No autorizado. Inicie sesión nuevamente.', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    } else {
+                        toast.error('Error al crear el libro', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                        });
+                    }
+                } else {
+                    toast.error('Error de red. Por favor, inténtelo de nuevo más tarde.', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                    });
+                }
             });
-    };
+    };    
 
     const handleChange = (e) => {
 

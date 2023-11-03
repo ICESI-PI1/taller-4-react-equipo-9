@@ -48,19 +48,41 @@ function AuthorCreation() {
                 },
             })
             .then((response) => {
-                console.log('Autor creado:', response.data);
-                toast.success('Autor creado con éxito', {
-                    position: 'top-right',
-                    autoClose: 3000,
-                });
+                if (response.status === 200) {
+                    console.log('Autor creado:', response.data);
+                    toast.success('Autor creado con éxito', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                    });
+                }
             })
             .catch((error) => {
                 console.error('Error al crear el autor:', error);
-                toast.error('Error al crear el autor', {
+            if (error.response) {
+                if (error.response.status === 400) {
+                    toast.error('Error en la solicitud. Verifique los datos proporcionados.', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                    });
+                } else if (error.response.status === 401) {
+                    toast.error('No autorizado. Inicie sesión nuevamente.', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                    });
+                } else {
+                    toast.error('Error al crear el autor', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                    });
+                }
+            } else {
+                toast.error('Error de red. Por favor, inténtelo de nuevo más tarde.', {
                     position: 'top-right',
                     autoClose: 3000,
                 });
-            });
+            }
+        });
+
     };
 
     const handleChange = (e) => {
